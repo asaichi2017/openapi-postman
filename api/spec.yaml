@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Sample API
+  version: '0.1'
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  description: サンプル
+  contact:
+    name: 中村太一
+    email: taichi@asaichi.co.jp
+servers:
+  - url: 'https://api.postman-example.jp'
+tags:
+  - name: Auth
+    description: Auth
+paths:
+  /login:
+    post:
+      summary: ログイン
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: email address
+                  example: test@example.com
+                  maxLength: 255
+                  format: email
+                password:
+                  type: string
+                  description: password
+                  format: password
+                  example: password
+                  maxLength: 255
+        description: ''
+      description: |-
+        login
+      tags:
+        - Auth
+      operationId: login
+      security: []
+    parameters: []
+  /logout:
+    post:
+      summary: ログアウト
+      responses:
+        '204':
+          description: No Content
+      tags:
+        - Auth
+      operationId: logout
+      description: ログアウト
+      security: []
+    parameters: []
+  /api/me:
+    get:
+      summary: ログインユーザーの情報を取得
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                required:
+                  - id
+                  - name
+                  - email
+      tags:
+        - Auth
+      description: ログインユーザーの情報を取得
+      operationId: me.show
+      security: []

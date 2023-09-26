@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "newman": "^6.0.0",
+    "openapi-to-postmanv2": "^4.17.0",
+    "postman-collection": "^4.2.1"
+  },
+  "scripts": {
+    "convert": "openapi2postmanv2 -s spec.yaml -o collection.json -p -O folderStrategy=Tags && node convert.js"
+  }
+}

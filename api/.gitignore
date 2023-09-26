@@ -1,0 +1,4 @@
+*.json
+*.html
+node_modules
+!package.json
